@@ -1,15 +1,15 @@
 class Node:
-    def __init__(self,data):
+    def __init__(self,data=None):
         self.data = data
         self.next = None
 
 class Linkedlist:
     def __init__(self):
-        self.head = node()
+        self.head = Node()
 
     # Add a new node data
     def append(self,data):
-        new_data = node(data)
+        new_data = Node(data)
         current_node = self.head
         while current_node.next is not None:
             current_node = current_node.next
@@ -19,9 +19,9 @@ class Linkedlist:
     def display(self):
         elements = []
         current_node = self.head
-        print ("self.head : {}".format(current_node))
         while current_node.next is not None:
-            elements.append(current_node)
+            current_node = current_node.next
+            elements.append(current_node.data)
         print ("Elements in the linked list : {}".format(elements))
 
     # Length of Linkedlist
@@ -41,7 +41,7 @@ class Linkedlist:
         current_index = 0
         current_node = self.head
         while True:
-            if current_index = index:
+            if current_index == index:
                 ele = current_node.data
             current_node = current_node.next
             current_index +=1
@@ -54,20 +54,33 @@ class Linkedlist:
         previous_node = current_node
         current_index = 0
         while True:
-            if current_index = index:
+            if current_index == index:
                 previous_node.next = current_node.next
             previous_node = current_node
             current_node = current_node.next
             current_index +=1
-                                
 
-
-
-
-
-
-
-
-
-if __name__ == "__main__":
-    main()
+my_list = Linkedlist()
+while True:
+    print("Select the option below\n1. Append\n2. Display\n3. Length\n4. Get\n5.Erase\n")
+    choose = int(input())
+    if choose == 1:
+        print("Enter data to be appened\n")
+        data = input()
+        my_list.append(data)
+    elif choose == 2:
+        print("Elements in the Linkedlist\n")
+        my_list.display()
+    elif choose == 3:
+        print("Length of the Linkedlist\n")
+        my_list.count()
+    elif choose == 4:
+        print("Enter the index of the elements to be return\n")
+        index = input()
+        my_list.get(index)
+    elif choose == 5:
+        print ("Enter the index of the elements to be erased\n")
+        index = input()
+        my_list.erase(index)
+    else:
+        print("Invalid entry")

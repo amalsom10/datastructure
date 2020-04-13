@@ -83,4 +83,4 @@ while True:
         index = int(input())
         my_list.erase(index)
     else:
-        print("Invalid entry")
+        print("Invalid choose entry")

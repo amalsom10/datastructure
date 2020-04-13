@@ -1,3 +1,4 @@
+import sys
 class Node:
     def __init__(self,data=None):
         self.data = data
@@ -38,12 +39,13 @@ class Linkedlist:
     def get(self,index):
         current_index = 0
         current_node = self.head
-        current_node = current_node.next
-        while True:
-            current_node = current_node.next
+        while (current_node):
             if current_index == index:
                 ele = current_node.data
             current_index +=1
+            current_node = current_node.next
+        print ("Element in the index: {}".format(ele))
+
 
 
     # Erase an elements in Linkedlist
@@ -53,16 +55,19 @@ class Linkedlist:
         current_node = self.head
         previous_node = current_node
         current_index = 0
-        while True:
+        while (current_node):
             if current_index == index:
                 previous_node.next = current_node.next
             previous_node = current_node
             current_node = current_node.next
             current_index +=1
+        print ("Element erased in the index: {}".format(index))
+        count()
+        display()
 
 my_list = Linkedlist()
 while True:
-    print("Select the option below\n1. Append\n2. Display\n3. Length\n4. Get\n5.Erase\n")
+    print("Select the option below\n1. Append\n2. Display\n3. Length\n4. Get\n5. Erase\n6. Exit Script")
     choose = int(input())
     if choose == 1:
         print("Enter data to be appened\n")
@@ -82,5 +87,8 @@ while True:
         print ("Enter the index of the elements to be erased\n")
         index = int(input())
         my_list.erase(index)
+    elif choose == 6:
+        print("\nExited from script")
+        sys.exit()
     else:
         print("Invalid choose entry")

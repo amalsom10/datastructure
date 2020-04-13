@@ -32,23 +32,23 @@ class Linkedlist:
             count += 1
             current_node = current_node.next
         print ("count of elements in the Linkedlist: {}".format(count))
-
+        return int(count)
 
     # Get elements in a particular index
     def get(self,index):
-        if index >= self.count() or index <0 :
-            print ("Invalid index value")
         current_index = 0
         current_node = self.head
+        current_node = current_node.next
         while True:
+            current_node = current_node.next
             if current_index == index:
                 ele = current_node.data
-            current_node = current_node.next
             current_index +=1
+
 
     # Erase an elements in Linkedlist
     def erase(self,index):
-        if index >= self.count or index < 0:
+        if index >= self.count() or index < 0:
             print ("Invalid index value")
         current_node = self.head
         previous_node = current_node
@@ -76,11 +76,11 @@ while True:
         my_list.count()
     elif choose == 4:
         print("Enter the index of the elements to be return\n")
-        index = input()
+        index = int(input())
         my_list.get(index)
     elif choose == 5:
         print ("Enter the index of the elements to be erased\n")
-        index = input()
+        index = int(input())
         my_list.erase(index)
     else:
         print("Invalid entry")
